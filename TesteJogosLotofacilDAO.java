@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import br.com.projeto.lotofacil.beans.JogosLotofacil;
 import br.com.projeto.lotofacil.dao.IJogosLotofacilDAO;
@@ -175,7 +176,8 @@ public class TesteJogosLotofacilDAO {
             dao.salvar(jogoLotofacil);
             break;
         case 2:
-            concursoID = leConcursoLotofacil();
+            System.out.println("Digite o concurso a excluir:");
+        	concursoID = leConcursoLotofacil();
             dao.excluir(concursoID);
             break;
         case 3:
@@ -193,411 +195,46 @@ public class TesteJogosLotofacilDAO {
         		System.out.println("Concurso nao encontrado!");
         	break;
         case 5:
-        	System.out.println("Listando números de 0 a 31 em binario");
         	
-        	for (int conjuntoLotofacil = 0; conjuntoLotofacil < 32; conjuntoLotofacil++) {
-        		System.out.println(Integer.toBinaryString(conjuntoLotofacil)+" corresponde ao número : "+ conjuntoLotofacil);
-        	   	}
+        	/*System.out.println("Listando números de 0 a 31 em binario");
+         	for (int conjuntoLotofacil = 0; conjuntoLotofacil < 32; conjuntoLotofacil++) {
+         		System.out.println(Integer.toBinaryString(conjuntoLotofacil)+" corresponde ao número : "+ conjuntoLotofacil);
+        	   	}*/
+        	System.out.println("Esta opção gera cinco conjuntos de números conforme a faixa de valores");
         	
-        	String pos1 = null,pos2= null,pos3= null,pos4 = null,pos5 = null;
+        	int total = 0;	
         	
-        	//combinação 31
+        	for (int i = 1; i<6;i++) {
+	      		int numero = 0;  
+	      		int min = 0, max = 32;
+	      		numero = (new Random().nextInt(max - min));
+	    	
+		  	
+	      		List<LinhaLotofacil> teste = new LinhaLotofacil().geraLinhas(i);
+	      		
+	      		LinhaLotofacil contador = teste.get(numero);
+	      		
+	      		System.out.println("Imprime combinação -->  " +numero+ " <--"  +contador );
+		  	
+	      		total = total + contador.retornaQtdNum();
         	
-        	pos1="5";
-        	pos2="4";
-        	pos3="3";
-        	pos4="2";
-        	pos5="1";
+	      		System.out.println("Total de números gerados --> "+total+" <-----");
         	
-        	LinhaLotofacil linha_31 = null; 
-        	linha_31 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);
+		  	
+        	/*if(i == 5 && total < 16) {
+		  		i = 1;
+		  	}
+        	else
+        		if(total >15) {
+        			i = 6;
+        		}*/
         	
-        	//combinação 30
         	
-        	pos1="null";
-        	pos2 ="4";
-        	pos3="3";
-        	pos4="2";
-        	pos5="1";
         	
-        	LinhaLotofacil linha_30 = null; 
-        	linha_30 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);
         	
-        	//combinação 29
+        	}
         	
-        	pos1="5";
-        	pos2 ="null";
-        	pos3="3";
-        	pos4="2";
-        	pos5="1";
-        	
-        	LinhaLotofacil linha_29 = null; 
-        	linha_29 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 28
-        	
-        	pos1="null";
-        	pos2 ="null";
-        	pos3="3";
-        	pos4="2";
-        	pos5="1";
-        	
-        	LinhaLotofacil linha_28 = null; 
-        	linha_28 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);
-        	
-        		
-        	//combinação 27
-        	
-        	pos1="5";
-        	pos2="4";
-        	pos3="null";
-        	pos4="2";
-        	pos5="1";
-        	
-        	LinhaLotofacil linha_27 = null; 
-        	linha_27 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 26
-        	
-        	pos1="null";
-        	pos2="4";
-        	pos3="null";
-        	pos4="2";
-        	pos5="1";
-        	
-        	LinhaLotofacil linha_26 = null; 
-        	linha_26 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 25
-        	
-        	pos1="5";
-        	pos2="null";
-        	pos3="null";
-        	pos4="2";
-        	pos5="1";
-        	
-        	LinhaLotofacil linha_25 = null; 
-        	linha_25 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 24
-        	
-        	pos1="null";
-        	pos2="null";
-        	pos3="null";
-        	pos4="2";
-        	pos5="1";
-        	
-        	LinhaLotofacil linha_24 = null; 
-        	linha_24 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 23
-        	
-        	pos1="5";
-        	pos2="4";
-        	pos3="3";
-        	pos4="null";
-        	pos5="1";
-        	
-        	LinhaLotofacil linha_23 = null; 
-        	linha_23 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 22
-        	
-        	pos1="null";
-        	pos2="4";
-        	pos3="3";
-        	pos4="null";
-        	pos5="1";
-        	
-        	LinhaLotofacil linha_22 = null; 
-        	linha_22 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 21
-        	
-        	pos1="5";
-        	pos2="null";
-        	pos3="3";
-        	pos4="null";
-        	pos5="1";
-        	
-        	LinhaLotofacil linha_21 = null; 
-        	linha_21 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 20
-        	
-        	pos1="null";
-        	pos2="null";
-        	pos3="3";
-        	pos4="null";
-        	pos5="1";
-        	
-        	LinhaLotofacil linha_20 = null; 
-        	linha_20 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 19
-        	
-        	pos1="5";
-        	pos2 ="4";
-        	pos3="null";
-        	pos4="null";
-        	pos5="1";
-        	
-        	LinhaLotofacil linha_19 = null; 
-        	linha_19 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);
-        	
-        	//combinação 18        	
-        	
-        	pos1="null";
-        	pos2 ="4";
-        	pos3="null";
-        	pos4="null";
-        	pos5="1";
-        	
-        	LinhaLotofacil linha_18 = null; 
-        	linha_18 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);
-        	
-        	//combinação 17
-        	
-        	pos1="5";
-        	pos2 ="null";
-        	pos3="null";
-        	pos4="null";
-        	pos5="1";
-        	
-        	LinhaLotofacil linha_17 = null; 
-        	linha_17 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 16
-        	
-        	pos1="null";
-        	pos2 ="null";
-        	pos3="null";
-        	pos4="null";
-        	pos5="1";
-        	
-        	LinhaLotofacil linha_16 = null; 
-        	linha_16 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);
-        	
-        	
-        	
-        	//combinação 15
-        	
-        	pos1="5";
-        	pos2="4";
-        	pos3="3";
-        	pos4="2";
-        	pos5="null";
-        	
-        	LinhaLotofacil linha_15 = null; 
-        	linha_15 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 14
-        	
-        	pos1="null";
-        	pos2="4";
-        	pos3="3";
-        	pos4="2";
-        	pos5="null";
-        	
-        	LinhaLotofacil linha_14 = null; 
-        	linha_14 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 13
-        	
-        	pos1="5";
-        	pos2="null";
-        	pos3="3";
-        	pos4="2";
-        	pos5="null";
-        	
-        	LinhaLotofacil linha_13 = null; 
-        	linha_13 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 12
-        	
-        	pos1="null";
-        	pos2="null";
-        	pos3="3";
-        	pos4="2";
-        	pos5="null";
-        	
-        	LinhaLotofacil linha_12 = null; 
-        	linha_12 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 11
-        	
-        	pos1="5";
-        	pos2="4";
-        	pos3="null";
-        	pos4="2";
-        	pos5="null";
-        	
-        	LinhaLotofacil linha_11 = null; 
-        	linha_11 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 10
-        	
-        	pos1="null";
-        	pos2="4";
-        	pos3="null";
-        	pos4="2";
-        	pos5="null";
-        	
-        	LinhaLotofacil linha_10 = null; 
-        	linha_10 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 09
-        	
-        	pos1="5";
-        	pos2="null";
-        	pos3="null";
-        	pos4="2";
-        	pos5="null";
-        	
-        	LinhaLotofacil linha_9 = null; 
-        	linha_9 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 8
-        	
-        	pos1="null";
-        	pos2="null";
-        	pos3="null";
-        	pos4="2";
-        	pos5="null";
-        	
-        	LinhaLotofacil linha_8 = null;
-        	linha_8 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);
-        	
-        	//combinação 7
-        	
-        	pos1="5";
-        	pos2="4";
-        	pos3="3";
-        	pos4="null";
-        	pos5="null";
-        	
-        	LinhaLotofacil linha_7 = null; 
-        	linha_7 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 6
-        	
-        	pos1="5";
-        	pos2="4";
-        	pos3="null";
-        	pos4="null";
-        	pos5="null";
-        	
-        	LinhaLotofacil linha_6 = null; 
-        	linha_6 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 5
-        	
-        	pos1="5";
-        	pos2="null";
-        	pos3="3";
-        	pos4="null";
-        	pos5="null";
-        	
-        	LinhaLotofacil linha_5 = null; 
-        	linha_5 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 4
-        	
-        	pos1="null";
-        	pos2="null";
-        	pos3="3";
-        	pos4="null";
-        	pos5="null";
-        	
-        	LinhaLotofacil linha_4 = null; 
-        	linha_4 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 3
-        	
-        	pos1="5";
-        	pos2="4";
-        	pos3="null";
-        	pos4="null";
-        	pos5="null";
-        	
-        	LinhaLotofacil linha_3 = null; 
-        	linha_3 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 2
-        	
-        	pos1="null";
-        	pos2="4";
-        	pos3="null";
-        	pos4="null";
-        	pos5="null";
-        	
-        	LinhaLotofacil linha_2 = null; 
-        	linha_2 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);		
-        	
-        	//combinação 1
-        	
-        	pos1="5";
-        	pos2="null";
-        	pos3="null";
-        	pos4="null";
-        	pos5="null";
-        	
-        	LinhaLotofacil linha_1 = null;
-        	linha_1 = new LinhaLotofacil(pos1,pos2,pos3,pos4,pos5);
-        	
-        	//combinação 0
-        	
-        	pos1="null";
-        	pos2="null";
-        	pos3="null";
-        	pos4="null";
-        	pos5="null";
-        	
-        	LinhaLotofacil linha_0 = new LinhaLotofacil(null,null,null,null,null);
-        	
-        	//Cria ArrayList para inserir as combinações     	
-        	
-        	List<LinhaLotofacil> linha = new ArrayList<>();
-        	
-        	linha.add(linha_0);
-        	linha.add(linha_1);
-        	linha.add(linha_2);
-        	linha.add(linha_3);
-        	linha.add(linha_4);
-        	linha.add(linha_5);
-        	linha.add(linha_6);
-        	linha.add(linha_7);
-        	linha.add(linha_8);
-        	linha.add(linha_9);
-        	linha.add(linha_10);
-        	linha.add(linha_11);
-        	linha.add(linha_12);
-        	linha.add(linha_13);
-        	linha.add(linha_14);
-        	linha.add(linha_15);
-        	linha.add(linha_16);
-        	linha.add(linha_17);
-        	linha.add(linha_18);
-        	linha.add(linha_19);
-        	linha.add(linha_20);
-        	linha.add(linha_21);
-        	linha.add(linha_22);
-        	linha.add(linha_23);
-        	linha.add(linha_24);
-        	linha.add(linha_25);
-        	linha.add(linha_26);
-        	linha.add(linha_27);
-        	linha.add(linha_28);
-        	linha.add(linha_29);
-        	linha.add(linha_30);
-        	linha.add(linha_31);
-        	
-        	
-        	
-        	
-        	
-        	
-        	imprimeLinhas(linha);
+        
         	
         }
     }
